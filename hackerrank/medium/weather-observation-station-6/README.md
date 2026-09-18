@@ -1,4 +1,4 @@
-# Weather Observation Station 5
+# Weather Observation Station 6
 
 ![Difficulty](https://img.shields.io/badge/Difficulty-Medium-yellow)
 
@@ -25,7 +25,7 @@ where *LAT\_N* is the northern latitude and *LONG\_W* is the western longitude.
 **Language:** db2  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-09-18T02:44:59.117Z  
+**Submitted:** 2026-09-18T02:48:11.717Z  
 
 ```db2
 
@@ -34,15 +34,9 @@ where *LAT\_N* is the northern latitude and *LONG\_W* is the western longitude.
     1. Please append a semicolon ";" at the end of the query and enter your query in a single line to avoid error.
     2. The AS keyword causes errors, so follow this convention: "Select t.Field From table1 t" instead of "select t.Field From table1 AS t"
     3. Type your code immediately after comment. Don't leave any blank line.
-*/SELECT CITY, LENGTH(CITY) 
+*/SELECT DISTINCT CITY 
 FROM STATION 
-ORDER BY LENGTH(CITY) ASC, CITY ASC 
-FETCH FIRST 1 ROWS ONLY;
-
-SELECT CITY, LENGTH(CITY) 
-FROM STATION 
-ORDER BY LENGTH(CITY) DESC, CITY ASC 
-FETCH FIRST 1 ROWS ONLY;
+WHERE LOWER(SUBSTR(CITY, 1, 1)) IN ('a', 'e', 'i', 'o', 'u');
 
 ```
 
