@@ -1,4 +1,4 @@
-# Weather Observation Station 12
+# Higher Than 75 Marks
 
 ![Difficulty](https://img.shields.io/badge/Difficulty-Medium-yellow)
 
@@ -23,7 +23,7 @@ The *Name* column only contains uppercase (`A`-`Z`) and lowercase (`a`-`z`) lett
 **Language:** db2  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-09-19T04:14:05.798Z  
+**Submitted:** 2026-09-19T04:17:15.577Z  
 
 ```db2
 
@@ -32,10 +32,10 @@ The *Name* column only contains uppercase (`A`-`Z`) and lowercase (`a`-`z`) lett
     1. Please append a semicolon ";" at the end of the query and enter your query in a single line to avoid error.
     2. The AS keyword causes errors, so follow this convention: "Select t.Field From table1 t" instead of "select t.Field From table1 AS t"
     3. Type your code immediately after comment. Don't leave any blank line.
-*/SELECT DISTINCT CITY 
-FROM STATION 
-WHERE LOWER(SUBSTR(CITY, 1, 1)) NOT IN ('a', 'e', 'i', 'o', 'u')
-  AND LOWER(SUBSTR(CITY, LENGTH(CITY), 1)) NOT IN ('a', 'e', 'i', 'o', 'u');
+*/SELECT NAME 
+FROM STUDENTS 
+WHERE MARKS > 75 
+ORDER BY SUBSTR(NAME, LENGTH(NAME) - 2, 3) ASC, ID ASC;
 
 ```
 
