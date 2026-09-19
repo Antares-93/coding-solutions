@@ -1,4 +1,4 @@
-# Type of Triangle
+# The PADS
 
 ![Difficulty](https://img.shields.io/badge/Difficulty-Medium-yellow)
 
@@ -32,19 +32,19 @@ The **OCCUPATIONS** table is described as follows:
 **Language:** SQL  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-09-19T07:50:15.305Z  
+**Submitted:** 2026-09-19T07:55:04.669Z  
 
 ```sql
 /*
 Enter your query here.
-*/SELECT 
-    CASE 
-        WHEN A + B <= C OR A + C <= B OR B + C <= A THEN 'Not A Triangle'
-        WHEN A = B AND B = C THEN 'Equilateral'
-        WHEN A = B OR B = C OR A = C THEN 'Isosceles'
-        ELSE 'Scalene'
-    END
-FROM TRIANGLES;
+*/SELECT CONCAT(NAME, '(', SUBSTR(OCCUPATION, 1, 1), ')')
+FROM OCCUPATIONS
+ORDER BY NAME ASC;
+
+SELECT CONCAT('There are a total of ', COUNT(OCCUPATION), ' ', LOWER(OCCUPATION), 's.')
+FROM OCCUPATIONS
+GROUP BY OCCUPATION
+ORDER BY COUNT(OCCUPATION) ASC, OCCUPATION ASC;
 
 ```
 
