@@ -1,4 +1,4 @@
-# The PADS
+# Occupations
 
 ![Difficulty](https://img.shields.io/badge/Difficulty-Medium-yellow)
 
@@ -28,19 +28,25 @@ The **OCCUPATIONS** table is described as follows:
 **Language:** SQL  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-09-19T07:55:12.177Z  
+**Submitted:** 2026-09-19T07:57:11.319Z  
 
 ```sql
 /*
 Enter your query here.
-*/SELECT CONCAT(NAME, '(', SUBSTR(OCCUPATION, 1, 1), ')')
-FROM OCCUPATIONS
-ORDER BY NAME ASC;
-
-SELECT CONCAT('There are a total of ', COUNT(OCCUPATION), ' ', LOWER(OCCUPATION), 's.')
-FROM OCCUPATIONS
-GROUP BY OCCUPATION
-ORDER BY COUNT(OCCUPATION) ASC, OCCUPATION ASC;
+*/SELECT 
+    MAX(CASE WHEN OCCUPATION = 'Doctor' THEN NAME END) AS Doctor,
+    MAX(CASE WHEN OCCUPATION = 'Professor' THEN NAME END) AS Professor,
+    MAX(CASE WHEN OCCUPATION = 'Singer' THEN NAME END) AS Singer,
+    MAX(CASE WHEN OCCUPATION = 'Actor' THEN NAME END) AS Actor
+FROM (
+    SELECT 
+        NAME, 
+        OCCUPATION, 
+        ROW_NUMBER() OVER(PARTITION BY OCCUPATION ORDER BY NAME) AS row_num
+    FROM OCCUPATIONS
+) AS temp
+GROUP BY row_num
+ORDER BY row_num;
 
 ```
 
